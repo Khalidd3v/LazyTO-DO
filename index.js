@@ -70,7 +70,9 @@ clearAll.addEventListener("click", event => {
 function search(searchTerm){
     Array.from(tasks.children)
     .filter( task => {
-        return !task.textContent.includes(searchTerm);
+        return !task.textContent
+        .toLowerCase()
+        .includes(searchTerm);
     })
     .forEach(event => {
         event.classList.add("hide");
@@ -78,7 +80,9 @@ function search(searchTerm){
 
     Array.from(tasks.children)
     .filter(task => {
-        return task.textContent.includes(searchTerm);
+        return task.textContent
+        .toLowerCase()
+        .includes(searchTerm);
     })
     .forEach(item => {
         item.classList.remove("hide");
@@ -86,7 +90,7 @@ function search(searchTerm){
 }
 
 searchForm.addEventListener("keyup", event => {
-    let searchTerm = searchForm.task.value;
+    let searchTerm = searchForm.task.value.toLowerCase();
    search(searchTerm);
 });
 
