@@ -136,3 +136,7 @@
 .delete-message {
     color: green;
 }
+
+.hide {
+    display: none !important;
+}

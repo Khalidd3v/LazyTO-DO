@@ -4,6 +4,7 @@ const clearAll = document.querySelector(".clear");
 const messsage = document.querySelector(".message span");
 const deleteMessage = document.querySelector(".delete-message");
 const enventoryMessage = document.querySelector(".Enventory");
+const searchForm = document.querySelector(".search");
 
 
 function updateEnventoryMessage(){
@@ -11,7 +12,7 @@ function updateEnventoryMessage(){
     if(getTask <= 0){
         enventoryMessage.textContent = "your tasks enventory is empty";
     } else{
-        enventoryMessage.textContent = "Try to Accomplish you Tasks on time :)";
+        enventoryMessage.textContent = "Try to Accomplish you Tasks on time.";
     }
     
 }
@@ -64,6 +65,29 @@ clearAll.addEventListener("click", event => {
         updateEnventoryMessage();
         
     });
-})
+});
+
+function search(searchTerm){
+    Array.from(tasks.children)
+    .filter( task => {
+        return !task.textContent.includes(searchTerm);
+    })
+    .forEach(event => {
+        event.classList.add("hide");
+    });
+
+    Array.from(tasks.children)
+    .filter(task => {
+        return task.textContent.includes(searchTerm);
+    })
+    .forEach(item => {
+        item.classList.remove("hide");
+    });
+}
+
+searchForm.addEventListener("keyup", event => {
+    let searchTerm = searchForm.task.value;
+   search(searchTerm);
+});
 
 
