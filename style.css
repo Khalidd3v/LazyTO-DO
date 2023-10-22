@@ -132,3 +132,7 @@
     font-size: 16px;
     border-radius: 3px;
 }
+
+.delete-message {
+    color: green;
+}
